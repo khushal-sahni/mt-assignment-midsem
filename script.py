@@ -1,9 +1,11 @@
 import requests
+
 from delphin import ace
 ## function to return a sentence for word passed to it 
 
 def sentenceGenerator(word):
     response = requests.get(f'https://lt-nlgservice.herokuapp.com/rest/english/realise?subject={word}&verb=eat&object=human')
+
     data = response.json()
     return data['sentence']
 
