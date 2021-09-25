@@ -18,7 +18,8 @@ def doSomething(word):
     sentence = sentenceGenerator(word)
     aceParse = aceParser(sentence)
     length = len(word)
-    pos = aceParse.find(f'<4:{4+length}')  # position of that <4:20> kinda thing
+    wordIndex = sentence.find(word)
+    pos = aceParse.find(f'<{wordIndex}:{wordIndex+length}')  # position of that <4:20> kinda thing
 
     pos1 = pos;
     while(aceParse[pos1-1] != ' '):
@@ -36,5 +37,4 @@ def doSomething(word):
     pos3 -= 1
     concept_label = aceParse[pos2 : pos3]
     print(concept_label)
-
 
