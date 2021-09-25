@@ -37,5 +37,4 @@ def doSomething(word):
     concept_label = aceParse[pos2 : pos3]
     print(concept_label)
 
-doSomething("fuck")
 
