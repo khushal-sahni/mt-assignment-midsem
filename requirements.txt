@@ -10,3 +10,5 @@ six==1.16.0
 urllib3==1.26.7
 wxconv==1.0.0.0
 beautifulsoup4~=4.10.0
+googletrans~=3.1.0a0
+nltk~=3.6.3

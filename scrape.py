@@ -1,16 +1,18 @@
 import requests
 from bs4 import BeautifulSoup as bs
-from pathlib import Path
 
 
-def scrape_webpage_store_in_files():
-    target_path = Path('scrapped_files')
-    target_path.mkdir(parents=True, exist_ok=True)
-    url = 'https://dsal.uchicago.edu/cgi-bin/app/bahri_query.py?page='
+def scrape_webpage_get_words(page_number):
+    url = 'https://dsal.uchicago.edu/cgi-bin/app/caturvedi_query.py?page='
+    page_number = str(page_number)
+    page = requests.get(url + page_number)
+    soup = bs(page.content, 'html.parser')
+    content = soup.find("div", {"class": "hw_result"}).get_text()
+    read_data = content.splitlines()
+    parsed = [word.split() for word in read_data]
+    words_list = []
+    for word in parsed:
+        if len(word) > 0:
+            words_list.append(word[0].split()[0])
 
-    for i in range(709):
-        page = requests.get(url + str(i))
-        soup = bs(page.content, 'html.parser')
-        content = soup.find("div", {"class": "hw_result"}).get_text()
-        with open('scrapped_files/' + str(i + 1) + '.txt', 'a') as file:
-            file.write(content)
+    return words_list
