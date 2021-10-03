@@ -9,9 +9,9 @@ from nltk.corpus import state_union                       # for training our tok
 from nltk.tokenize import PunktSentenceTokenizer          # tokenizer
 nltk.download('state_union')                              # text for training 
 nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt')
 
-
-train_text = state_union.raw('2006-GWBUsh.txt')
+train_text = state_union.raw('2006-GWBush.txt')
 sample_text = "Ram is a good boy"                        # our text to be given 
 
 custom_tokenizer = PunktSentenceTokenizer(train_text)    # tokenizer getting trained
