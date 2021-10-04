@@ -3,8 +3,9 @@ import requests
 
 from delphin import ace
 
-
 # function to return a sentence for word passed to it
+from six import assertCountEqual
+
 
 def sentenceGenerator(word, type="subject"):
     if (type == "subject"):
@@ -34,6 +35,9 @@ def aceParser(sentence, compiled_grammer_path, ace_binary_path):
         return 0
 
 
+print(aceParser("He is very honest boy", '/home/kishan/ace-0.9.24/erg-1214-x86-64-0.9.24.dat', '/home/kishan/ace-0.9.24/ace'))
+
+
 def doSomething(word, type="subject"):
     sentence = sentenceGenerator(word, type)
     aceParse = aceParser(sentence)
@@ -59,5 +63,3 @@ def doSomething(word, type="subject"):
     pos3 -= 1
     concept_label = aceParse[pos2: pos3]
     print(concept_label)
-
-

@@ -1,4 +1,6 @@
 from wordnet import word_net
+import sys
+
 
 from scrape import scrape_webpage_get_words
 from script import aceParser
@@ -6,11 +8,14 @@ from util import hindi_to_english, sentence_generator, wx_converter, get_mrs_con
 
 total_page = 709
 
+# ace_binary_path = sys.argv[0]
+# compiled_grammer_path = sys.argv[1]
 ace_binary_path = '/home/kishan/ace-0.9.24/ace'
 compiled_grammer_path = '/home/kishan/ace-0.9.24/erg-1214-x86-64-0.9.24.dat'
 
 for i in range(total_page):
     words_list = scrape_webpage_get_words(i + 1)
+    print(words_list)
     words_english = [hindi_to_english(word) for word in words_list]
     for word in words_english:
         if len(word.split()) > 1:

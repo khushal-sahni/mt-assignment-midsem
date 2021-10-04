@@ -16,3 +16,4 @@ def scrape_webpage_get_words(page_number):
             words_list.append(word[0].split()[0])
 
     return words_list
+
